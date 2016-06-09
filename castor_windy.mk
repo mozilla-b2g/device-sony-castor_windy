@@ -12,5 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/castor_windy.mk
+$(call inherit-product, device/sony/castor_windy/aosp_sgp511.mk)
+
+PRODUCT_NAME := castor_windy
+PRODUCT_DEVICE := castor_windy
+PRODUCT_MODEL := Xperia Z2 Tablet WiFi (B2G)
+
+GAIA_DEV_PIXELS_PER_PX := 2
+# Should be 1200p
+BOOTANIMATION_ASSET_SIZE := 1080p
+
+PRODUCT_COPY_FILES += \
+    device/sony/castor_windy/bootrec-device:root/sbin/bootrec-device
+
+$(call inherit-product-if-exists, vendor/sony/castor_windy-blobs/castor_windy-vendor-blobs.mk)
